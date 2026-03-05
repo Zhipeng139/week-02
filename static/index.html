@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qwen Chat UI</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1>Qwen Chat UI</h1>
+      <div class="controls">
+        <label for="modelSelect">Model</label>
+        <select id="modelSelect"></select>
+        <label class="switch">
+          <input id="streamToggle" type="checkbox" checked>
+          <span>Streaming</span>
+        </label>
+        <label for="temperatureInput">Temperature</label>
+        <input id="temperatureInput" type="number" min="0" max="2" step="0.1" value="0.7">
+      </div>
+    </header>
+    <section id="chatLog" class="chat-log"></section>
+    <form id="chatForm" class="composer">
+      <textarea id="messageInput" placeholder="Type your message..." rows="3" required></textarea>
+      <button id="sendButton" type="submit">Send</button>
+    </form>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,18 +1,24 @@
 import json
 import time
 import uuid
+from pathlib import Path
 from threading import Lock, Thread
 from typing import Literal
 
 import torch
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 from fastapi.responses import StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer
 
 MODEL_ID = "Qwen/Qwen3-1.7B"
+BASE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = BASE_DIR / "static"
 
 app = FastAPI(title="OpenAI-compatible Qwen API", version="1.0.0")
+app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 _tokenizer = None
 _model = None
@@ -89,6 +95,11 @@ def list_models():
             }
         ],
     }
+
+
+@app.get("/")
+def frontend():
+    return FileResponse(STATIC_DIR / "index.html")
 
 
 @app.post("/v1/chat/completions")

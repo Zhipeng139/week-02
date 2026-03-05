@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #111827;
+  color: #f9fafb;
+}
+
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+  padding: 24px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+select,
+input[type="number"],
+textarea,
+button {
+  border-radius: 10px;
+  border: 1px solid #374151;
+  background: #1f2937;
+  color: #f9fafb;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chat-log {
+  overflow-y: auto;
+  padding: 12px;
+  border: 1px solid #374151;
+  border-radius: 12px;
+  background: #0f172a;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  max-width: 85%;
+  border-radius: 12px;
+  padding: 10px 12px;
+  white-space: pre-wrap;
+  line-height: 1.35;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #2563eb;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background: #1f2937;
+}
+
+.message.system {
+  align-self: center;
+  background: #4b5563;
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  cursor: pointer;
+  background: #059669;
+  border-color: #059669;
+  min-width: 96px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
